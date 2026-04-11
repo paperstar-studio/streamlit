@@ -1,1 +1,8 @@
 streamlit
+plotly
+psycopg2-binary
+pandas
+sqlalchemy
+python-dotenv
+st-social-media-links
+statsmodels

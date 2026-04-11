@@ -4,7 +4,6 @@ import os
 import toml
 import pandas as pd
 import streamlit as st
-from utils import socials_get
 import plotly.express as px
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
@@ -12,18 +11,8 @@ from sqlalchemy import create_engine
 from st_social_media_links import SocialMediaIcons
 
 st.set_page_config( page_title="paperstar studio", page_icon=":shark:", )
-
-toggle_value = True
-
-with st.sidebar:
-    st.markdown("""<h5 style="text-align: center">socials</h5>""", unsafe_allow_html=True)
-    SocialMediaIcons(socials_get()).render(sidebar=True, justify_content="space-evenly")
-    if 'selection' not in st.session_state:
-        st.session_state.selection = 'dark'
-    if 'selection_index' not in st.session_state:
-        st.session_state.selection_index = 1
-
 session_state = st.session_state
+toggle_value = True
 load_dotenv()
 
 #@st.cache_data(ttl='1d', show_spinner=True)
@@ -39,8 +28,8 @@ if __name__ == "__main__":
     st.markdown("""
         <h1 style="text-align: center"> paperstar studio </h1>
         <p style="text-align: center">a creative place</p>
+        <hr/>
     """, unsafe_allow_html=True)
-    st.divider()
 
     st.code("""
 hello,
