@@ -8,7 +8,7 @@ st.write(
 
 pages = {
     "running": [
-        st.Page("running.py", title="running data"),
+        st.Page("pages/running.py", title="running data"),
     ],
 }
 
