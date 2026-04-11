@@ -11,7 +11,6 @@ from datetime import datetime, timedelta, timezone
 from sqlalchemy import create_engine
 from st_social_media_links import SocialMediaIcons
 
-
 st.set_page_config( page_title="paperstar studio", page_icon=":shark:", )
 
 toggle_value = True
@@ -24,10 +23,8 @@ with st.sidebar:
     if 'selection_index' not in st.session_state:
         st.session_state.selection_index = 1
 
-
 session_state = st.session_state
 load_dotenv()
-
 
 #@st.cache_data(ttl='1d', show_spinner=True)
 def get_running_data():
@@ -69,14 +66,11 @@ i love building software with a focus on data """, language=None, line_numbers=T
 {num_days.days}  days    since 2025-03-27 """, language=None, line_numbers=True, wrap_lines=True)
 
 
-
     ddf.set_index(keys=['date'], inplace=True)
     ddf_t = ddf.transpose()
     ddf_t.columns = ddf_t.columns.astype('str').str.replace('00:00:00+00:00', '')
     ddf_t.insert(len(ddf_t.columns), '2025-08-01', None)
     
-
-    #fig = px.scatter(df, x='date', y='distance [ km ]', color='elevation [ % of run ]', title="individual run distances", trendline="lowess")
     fig = px.scatter(df, x='date', y='distance [ km ]',  title="individual run distances and elevation gains", trendline="lowess")
     
     fig.add_vline(x=datetime(2025, 4,1), line_width=1, line_dash="dash", line_color="grey")
@@ -88,19 +82,14 @@ i love building software with a focus on data """, language=None, line_numbers=T
     fig.add_vline(x=datetime(2025, 10, 1), line_width=1, line_dash="dash", line_color="grey")
     fig.add_vline(x=datetime(2025, 11, 1), line_width=1, line_dash="dash", line_color="grey")
     fig.add_vline(x=datetime(2025, 12, 1), line_width=1, line_dash="dash", line_color="grey")
-    fig.add_vline(x=datetime(2026, 1, 1), line_width=1, line_dash="dash", line_color="grey")
-    fig.add_vline(x=datetime(2026, 2, 1), line_width=1, line_dash="dash", line_color="grey")
-    fig.add_vline(x=datetime(2026, 3, 1), line_width=1, line_dash="dash", line_color="grey")
-    fig.add_vline(x=datetime(2026, 4, 1), line_width=1, line_dash="dash", line_color="grey")
-
+    for month in range(1,6):
+        fig.add_vline(x=datetime(2026, month, 1), line_width=1, line_dash="dash", line_color="grey")
+    
     fig.add_hline(y=df['distance [ km ]'].mean(), line_width=2, line_dash="dash", line_color="black")
 
     fig.update_layout(showlegend=False)
     fig.update_layout(coloraxis_showscale=False)
     st.plotly_chart(fig)
 
-    #st.divider()
-    #st.dataframe(ddf_t, use_container_width=True, hide_index=False,)
-    
 
     st.markdown("""<style>#MainMenu {visibility: hidden;}footer {visibility: hidden;}</style>""", unsafe_allow_html=True)
