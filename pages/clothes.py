@@ -22,7 +22,7 @@ st.markdown("""
 # i'm looking at people in real life who look good and trying to blatantly copy them
 
 brands = pd.DataFrame([
-    {'brand_id':0, 'brand':'UNKOWN'},
+    {'brand_id':0, 'brand':'UNKNOWN'},
     {'brand_id':1, 'brand':'levis'},
     {'brand_id':2, 'brand':'uniqlo'},
     {'brand_id':3, 'brand':'patagonia'},
@@ -41,7 +41,6 @@ df = pd.DataFrame([
     # UNKOWN
     {'type':'tops',      'name':'t-shirt striped',  'brand_id':0, 'color':'multi',  'size': 'M',   'thrift':1, 'price': 0,     'bought': datetime(2025, 1, 1)},
     {'type':'tops',      'name':'sweatshirt evo',   'brand_id':0, 'color':'purple', 'size': 'L',   'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
-    {'type':'tops',      'name':'sweatshirt evo',   'brand_id':0, 'color':'grey',   'size': 'M',   'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
     {'type':'jacket',    'name':'Jacket leather',   'brand_id':0, 'color':'black',  'size': 'S',   'thrift':1, 'price': 25,    'bought': datetime(2025, 1, 1)},
     {'type':'underwear', 'name':'hat',              'brand_id':0, 'color':'blue',   'size': 'one', 'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
     {'type':'jacket',    'name':'pink ski',         'brand_id':0, 'color':'pink',   'size': 'one', 'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
@@ -91,6 +90,7 @@ df = pd.DataFrame([
 df = pd.merge(df, brands, on='brand_id')
 df['img'] = f"https://raw.githubusercontent.com/paperstar-studio/images/refs/heads/main/" + df['brand'] + "_" + df['name'] + "_" + df['color'] + ".jpeg"
 
+st.write(''' df['img'] = f"https://raw.githubusercontent.com/paperstar-studio/images/refs/heads/main/" + df['brand'] + "_" + df['name'] + "_" + df['color'] + ".jpeg" ''')
 
 
 st.markdown(""" <p style="text-align: center;">my current physical wardrobe consists of</p>""", unsafe_allow_html=True)
