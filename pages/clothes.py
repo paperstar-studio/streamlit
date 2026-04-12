@@ -122,7 +122,8 @@ st.dataframe(df, height=(1+ len(df.index))*35 +3,
     column_config={
     "img": st.column_config.ImageColumn(
         "Preview Image", help="Streamlit app preview screenshots"
-    )
+    )}
+ )
 
 st.markdown(""" <h3 style="text-align: center;">clothes i want</h3>""", unsafe_allow_html=True)
 st.link_button("Nike X Off-white Running Shorts","https://images.vestiairecollective.com/images/resized/w=1246,q=75,f=auto,/produit/black-other-nike-x-off-white-shorts-50362607-1_2.jpg")
