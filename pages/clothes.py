@@ -90,7 +90,7 @@ df = pd.DataFrame([
 df = pd.merge(df, brands, on='brand_id')
 df['img'] = f"https://raw.githubusercontent.com/paperstar-studio/images/refs/heads/main/" + df['brand'] + "_" + df['name'] + "_" + df['color'] + ".jpeg"
 
-st.write(''' df['img'] = f"https://raw.githubusercontent.com/paperstar-studio/images/refs/heads/main/" + df['brand'] + "_" + df['name'] + "_" + df['color'] + ".jpeg" ''')
+st.code(''' df['img'] = f"https://raw.githubusercontent.com/paperstar-studio/images/refs/heads/main/" + df['brand'] + "_" + df['name'] + "_" + df['color'] + ".jpeg" ''')
 
 
 st.markdown(""" <p style="text-align: center;">my current physical wardrobe consists of</p>""", unsafe_allow_html=True)
