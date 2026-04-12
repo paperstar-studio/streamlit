@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
 
 
+st.set_page_config( page_title="paperstar studio", page_icon=":shark:", layout='centered')
 session_state = st.session_state
 load_dotenv()
 
@@ -52,32 +53,32 @@ df = pd.DataFrame([
     {'type':'tops',      'name':'sweatshirt',       'brand_id':2, 'color':'black',  'size': 'M',   'thrift':0, 'price': 39.90, 'bought': datetime(2025, 2, 23)},
     {'type':'pants',     'name':'sweatpants',       'brand_id':2, 'color':'grey',   'size': 'L',   'thrift':0, 'price': 34.99, 'bought': datetime(2025, 1, 1)},
     {'type':'tops',      'name':'sweatshirt',       'brand_id':2, 'color':'grey',   'size': 'XL',  'thrift':0, 'price': 39.90, 'bought': datetime(2025, 1, 1)},
-    {'type':'jacket',    'name':'UV jacket',        'brand_id':2, 'color':'black',  'size': 'XL',  'thrift':0, 'price': 39.90, 'bought': datetime(2025, 1, 1)},
-    {'type':'tops',      'name':'t-shirt',          'brand_id':2, 'color':'black',  'size': 'XXXL','thrift':0, 'price': 14.90, 'bought': datetime(2025, 1, 1)},
+    {'type':'jacket',    'name':'UV_jacket',        'brand_id':2, 'color':'black',  'size': 'XL',  'thrift':0, 'price': 39.90, 'bought': datetime(2025, 1, 1)},
+    {'type':'tops',      'name':'tshirt',          'brand_id':2, 'color':'black',  'size': 'XXXL','thrift':0, 'price': 14.90, 'bought': datetime(2025, 1, 1)},
     # patagonia
     {'type':'tops',      'name':'t-shirt',          'brand_id':3, 'color':'black',  'size': 'L',   'thrift':1, 'price': 45,    'bought': datetime(2025, 1, 1)},
     {'type':'tops',      'name':'t-shirt',          'brand_id':3, 'color':'grey',   'size': 'M',   'thrift':1, 'price': 45,    'bought': datetime(2025, 1, 1)},
     {'type':'tops',      'name':'longsleeve',       'brand_id':3, 'color':'green',  'size': 'M',   'thrift':0, 'price': 55,    'bought': datetime(2025, 6, 1)}, # from sophies parents
-    {'type':'pants',     'name':'rain shell',       'brand_id':3, 'color':'green',  'size': 'M',   'thrift':0, 'price': 98,    'bought': datetime(2025, 6, 1)}, # from sophies parents
+    {'type':'pants',     'name':'rain_shell',       'brand_id':3, 'color':'green',  'size': 'M',   'thrift':0, 'price': 98,    'bought': datetime(2025, 6, 1)}, # from sophies parents
     #dariadeh
     {'type':'pants',     'name':'Alice shorts',     'brand_id':4, 'color':'lilac',  'size': 'XL',  'thrift':0, 'price': 89,    'bought': datetime(2025, 8, 16)},
     {'type':'tops',      'name':'Alice shirt',      'brand_id':4, 'color':'lilac',  'size': 'XL',  'thrift':0, 'price': 129,   'bought': datetime(2025, 8, 16)},
     {'type':'tops',      'name':'t-shirt',          'brand_id':4, 'color':'black',  'size': 'L',   'thrift':1, 'price': 59.00, 'bought': datetime(2025, 4, 21)},
     # thought    
     {'type':'underwear', 'name':'socks polkadot',   'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
-    {'type':'underwear', 'name':'socks stripe',     'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
-    {'type':'underwear', 'name':'socks thin stripe','brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
-    {'type':'underwear', 'name':'socks polkadot',   'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
+    {'type':'underwear', 'name':'socks_polkadot2',  'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
+    {'type':'underwear', 'name':'socks_stripe',     'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
+    {'type':'underwear', 'name':'socks_stripe2',    'brand_id':5, 'color':'multi',  'size': 'L',   'thrift':1, 'price': 7.5,   'bought': datetime(2025, 1, 1)},
     # H&M
     {'type':'underwear', 'name':'underwear',        'brand_id':6, 'color':'grey',   'size': 'M',   'thrift':0, 'price': 4.0,   'bought': datetime(2024, 11, 27)},
-    {'type':'sport',     'name':'swim shorts',      'brand_id':6, 'color':'black',  'size': 'one', 'thrift':0, 'price': 14.99, 'bought': datetime(2025, 1, 1)},
+    {'type':'sport',     'name':'swim_shorts',      'brand_id':6, 'color':'black',  'size': 'one', 'thrift':0, 'price': 14.99, 'bought': datetime(2025, 1, 1)},
     # nike
     {'type':'sport',     'name':'headband',         'brand_id':7, 'color':'white',  'size': 'one', 'thrift':0, 'price': 12.99, 'bought': datetime(2025, 1, 1)},
     # armedangle
     {'type':'underwear', 'name':'underwear',        'brand_id':8, 'color':'blue',   'size': 'M',   'thrift':1, 'price': 15.0,   'bought': datetime(2024, 11, 27)},
     {'type':'underwear', 'name':'socks',            'brand_id':8, 'color':'pink',   'size': 'M',   'thrift':1, 'price': 15.0,   'bought': datetime(2024, 11, 27)},
     # happy socks
-    {'type':'underwear', 'name':'socks bear',       'brand_id':9, 'color':'black',  'size': 'L',   'thrift':0, 'price': 10,    'bought': datetime(2025, 1, 1)},
+    {'type':'underwear', 'name':'socks_bear',       'brand_id':9, 'color':'black',  'size': 'L',   'thrift':0, 'price': 10,    'bought': datetime(2025, 1, 1)},
     # iuman
     {'type':'underwear', 'name':'underwear',        'brand_id':10,'color':'green',  'size': 'M',   'thrift':0, 'price': 9.0,   'bought': datetime(2024, 11, 27)},
     {'type':'underwear', 'name':'underwear',        'brand_id':10,'color':'blue',   'size': 'M',   'thrift':0, 'price': 9.0,   'bought': datetime(2024, 11, 27)},
