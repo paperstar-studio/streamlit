@@ -62,6 +62,7 @@ df = pd.DataFrame([
     # H&M
     {'type':'underwear', 'name':'underwear',        'brand_id':6, 'color':'grey',   'size': 'M',   'thrift':0, 'price_to_me': 4.0,   'bought': datetime(2024, 1, 1), 'wear_since': datetime(2025, 1, 1), 'end':datetime.now()},
     {'type':'sport',     'name':'swim_shorts',      'brand_id':6, 'color':'black',  'size': 'one', 'thrift':0, 'price_to_me': 14.99, 'bought': datetime(2025, 1, 1), 'wear_since': datetime(2025, 1, 1), 'end':datetime.now()},
+    {'type':'tops',      'name':'tshirt',           'brand_id':6, 'color':'white',  'size': 'M', 'thrift':0, 'price_to_me': 5.99, 'bought': datetime(2025, 1, 1), 'wear_since': datetime(2025, 1, 1), 'end':datetime.now()},
     # nike
     {'type':'sport',     'name':'headband',         'brand_id':7, 'color':'white',  'size': 'one', 'thrift':0, 'price_to_me': 12.99, 'bought': datetime(2025, 1, 1), 'wear_since': datetime(2025, 1, 1), 'end':datetime.now()},
     # armedangle
