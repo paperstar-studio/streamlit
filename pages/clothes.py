@@ -39,11 +39,11 @@ brands = pd.DataFrame([
 
 df = pd.DataFrame([
     # UNKOWN
-    {'type':'tops',      'name':'t-shirt striped',  'brand_id':0, 'color':'multi',  'size': 'M',   'thrift':1, 'price': 0,     'bought': datetime(2025, 1, 1)},
-    {'type':'tops',      'name':'sweatshirt evo',   'brand_id':0, 'color':'purple', 'size': 'L',   'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
-    {'type':'jacket',    'name':'Jacket leather',   'brand_id':0, 'color':'black',  'size': 'S',   'thrift':1, 'price': 25,    'bought': datetime(2025, 1, 1)},
+    {'type':'tops',      'name':'tshirt_striped',   'brand_id':0, 'color':'multi',  'size': 'M',   'thrift':1, 'price': 0,     'bought': datetime(2025, 1, 1)},
+    {'type':'tops',      'name':'sweatshirt_evo',   'brand_id':0, 'color':'purple', 'size': 'L',   'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
+    {'type':'jacket',    'name':'jacket_leather',   'brand_id':0, 'color':'black',  'size': 'S',   'thrift':1, 'price': 25,    'bought': datetime(2025, 1, 1)},
     {'type':'underwear', 'name':'hat',              'brand_id':0, 'color':'blue',   'size': 'one', 'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
-    {'type':'jacket',    'name':'pink ski',         'brand_id':0, 'color':'pink',   'size': 'one', 'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
+    {'type':'jacket',    'name':'jacket_ski',       'brand_id':0, 'color':'pink',   'size': 'one', 'thrift':1, 'price': 0.00,  'bought': datetime(2025, 1, 1)},
     # levis
     {'type':'pants',     'name':'jeans',            'brand_id':1, 'color':'black',  'size': '32',  'thrift':1, 'price': 25,    'bought': datetime(2025, 1, 1)},
     # uniqlo
