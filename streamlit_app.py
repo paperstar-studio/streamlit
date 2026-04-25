@@ -7,6 +7,9 @@ pages = {
     "clothes": [
         st.Page("pages/clothes.py", title="digital wardrobe"),
     ],
+    "transport": [
+        st.Page("pages/transport.py", title="transport as of 2026-4-24"),
+    ],
 }
 
 
