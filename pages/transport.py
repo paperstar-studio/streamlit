@@ -28,30 +28,33 @@ def main_app(): # bought moped on 2026-4-23 THURSDAY
 
 	return df['cost'].sum()
 
-
-def km_input(engine):
+def km_driven(engine):
 	st.title("distance driven with moped")
 	already_driven = pd.read_sql("SELECT * FROM moped_km order by timestamp", con=engine)
+	st.plotly_chart(px.line(already_driven, x='timestamp', y=['km_account', 'km_moped'], markers=True))
+	st.divider()
+	return already_driven['km_account'].max()
+
+
+def km_input(engine):
 	col1, col2, col3 = st.columns(3)
 	with col1:		timestamp = st.datetime_input("timestamp")
 	with col2:		km = st.number_input("km on app")
 	with col3:		km_moped = st.number_input("km on moped", value=None)
-
 	if st.button("upload to db"):
 		df = pd.DataFrame([{'timestamp':timestamp, 'km_account':km, 'km_moped':km_moped}])
 		df.to_sql("moped_km", index=True, if_exists='append', con=engine)
 		st.badge("success", color="green")
-
-
-	st.plotly_chart(px.line(already_driven, x='timestamp', y=['km_account', 'km_moped'], markers=True))
-
-	st.divider()
-
-	return already_driven['km_account'].max()
-
+	return None
 
 if __name__ == "__main__":
 	engine = create_engine(os.environ["POSTGRES_URI"])
 	total_cost = main_app()
-	total_km = km_input(engine)
+	total_km = km_driven(engine)
 	st.write(f"cost: {round(total_cost/total_km,2)} euro / km")
+
+	#input_text = 
+	if os.environ['app_password'] == st.text_input("password", type='password'):	
+		km_input(engine)
+	else:
+		st.badge("plassword pls ...", color='red')

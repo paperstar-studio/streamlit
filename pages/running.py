@@ -25,18 +25,6 @@ def get_running_data():
 
 
 if __name__ == "__main__":
-    st.markdown("""
-        <h1 style="text-align: center"> paperstar studio </h1>
-        <p style="text-align: center">a creative place</p>
-        <hr/>
-    """, unsafe_allow_html=True)
-
-    st.code("""
-hello,
-my name is abel
-i love building software with a focus on data """, language=None, line_numbers=True, wrap_lines=True)
-
-    st.divider()
     st.markdown("""<h3 style="text-align: center">running data</h3><p style="text-align: center">totals since march 27, 2025</p>""", unsafe_allow_html=True)
     st.divider()
 
