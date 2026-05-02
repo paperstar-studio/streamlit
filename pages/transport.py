@@ -1,14 +1,12 @@
+import os
 import pandas as pd
 import streamlit as st
 from datetime import datetime
+from sqlalchemy import create_engine
 
 
-
-# bought moped on 2026-4-23 THURSDAY
-
-def main_app():
-	#st.badge(label="test", color='blue')
-
+def main_app(): # bought moped on 2026-4-23 THURSDAY
+	st.title("money spent on moped")
 	df = pd.DataFrame([
 		{'start':datetime(2026,4,23), 'cost':1999.00, 'end':datetime.now(), 'name':'moped'},
 		{'start':datetime(2026,4,23), 'cost':99.00, 'end':datetime.now(), 'name':'moped EU import'},
@@ -16,25 +14,33 @@ def main_app():
 	])
 	df['duration'] = (df['end'] - df['start']).dt.days
 	df['cost per day'] = df['cost'] / df['duration']
-
-
-
-
 	col1, col2, col3, col4 = st.columns(4)
-	with col1:
-		st.metric("days since transport switch", df['cost'].sum())
-	with col2:
-		st.metric("spent since transport switch", (datetime.now()-datetime(2026,4,23)).days)
-	with col3:
-		st.metric("cost per day", df['cost per day'].sum())
+	with col1:		st.metric("total cost", round(df['cost'].sum()))
+	with col2:		st.metric("days used", (datetime.now()-datetime(2026,4,23)).days)
+	with col3:		st.metric("cost / day", round(df['cost per day'].sum()))
+	st.write("cost table:")
+	st.dataframe(df, height=(35*(len(df.index)+1)+3))
+	st.divider()
 
+	return df['cost'].sum()
+
+
+def km_input(engine):
+	st.title("distance driven with moped")
+	already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
+	timestamp = st.datetime_input("timestamp")
+	km = st.number_input("km")
+
+	if st.button("upload to db"):
+		df = pd.DataFrame([{'timestamp':timestamp, 'km':km}])
+		st.badge("success", color="green")
 
 	st.divider()
 
-	st.dataframe(df, height=(35*(len(df.index)+1)+3))
-
-
+	return 1
 
 
 if __name__ == "__main__":
-	main_app()
+	engine = create_engine(os.environ("PSQL"))
+	total_cost = main_app()
+	total_km = km_input(engine)
