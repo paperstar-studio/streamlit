@@ -27,12 +27,14 @@ def main_app(): # bought moped on 2026-4-23 THURSDAY
 
 def km_input(engine):
 	st.title("distance driven with moped")
-	already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
-	timestamp = st.datetime_input("timestamp")
-	km = st.number_input("km")
+	#already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
+	col1, col2 = st.columns(2)
+	with col1:		timestamp = st.datetime_input("timestamp")
+	with col2:		km = st.number_input("km")
 
 	if st.button("upload to db"):
 		df = pd.DataFrame([{'timestamp':timestamp, 'km':km}])
+		df.to_sql("moped_km", index=False, if_exists='append', con=engine)
 		st.badge("success", color="green")
 
 	st.divider()
@@ -41,6 +43,6 @@ def km_input(engine):
 
 
 if __name__ == "__main__":
-	engine = create_engine(os.environ("PSQL"))
+	engine = create_engine(os.environ("POSTGRES_URI"))
 	total_cost = main_app()
 	total_km = km_input(engine)
