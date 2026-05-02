@@ -1,9 +1,13 @@
 import os
 import pandas as pd
 import streamlit as st
+import plotly.express as px
 from datetime import datetime
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
+
+load_dotenv()
 
 def main_app(): # bought moped on 2026-4-23 THURSDAY
 	st.title("money spent on moped")
@@ -27,22 +31,26 @@ def main_app(): # bought moped on 2026-4-23 THURSDAY
 
 def km_input(engine):
 	st.title("distance driven with moped")
-	#already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
-	col1, col2 = st.columns(2)
+	already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
+	col1, col2, col3 = st.columns(3)
 	with col1:		timestamp = st.datetime_input("timestamp")
-	with col2:		km = st.number_input("km")
+	with col2:		km = st.number_input("km on app")
+	with col3:		km_moped = st.number_input("km on moped")
 
 	if st.button("upload to db"):
-		df = pd.DataFrame([{'timestamp':timestamp, 'km':km}])
-		df.to_sql("moped_km", index=False, if_exists='append', con=engine)
+		df = pd.DataFrame([{'timestamp':timestamp, 'km_account':km, 'km_moped':km_moped}])
+		df.to_sql("moped_km", index=True, if_exists='append', con=engine)
 		st.badge("success", color="green")
+
+
+	st.plotly_chart(px.line(already_driven, x='timestamp', y=['km_account', 'km_moped'], markers=True))
 
 	st.divider()
 
-	return 1
+	return already_driven['km_account'].max()
 
 
 if __name__ == "__main__":
-	engine = create_engine(os.environ("POSTGRES_URI"))
+	engine = create_engine(os.environ["POSTGRES_URI"])
 	total_cost = main_app()
 	total_km = km_input(engine)
