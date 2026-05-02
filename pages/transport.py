@@ -54,3 +54,4 @@ if __name__ == "__main__":
 	engine = create_engine(os.environ["POSTGRES_URI"])
 	total_cost = main_app()
 	total_km = km_input(engine)
+	st.write(f"cost: {round(total_cost/total_km,2)} euro / km")
