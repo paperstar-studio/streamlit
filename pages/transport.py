@@ -31,11 +31,11 @@ def main_app(): # bought moped on 2026-4-23 THURSDAY
 
 def km_input(engine):
 	st.title("distance driven with moped")
-	already_driven = pd.read_sql("SELECT * FROM moped_km", con=engine)
+	already_driven = pd.read_sql("SELECT * FROM moped_km order by timestamp", con=engine)
 	col1, col2, col3 = st.columns(3)
 	with col1:		timestamp = st.datetime_input("timestamp")
 	with col2:		km = st.number_input("km on app")
-	with col3:		km_moped = st.number_input("km on moped")
+	with col3:		km_moped = st.number_input("km on moped", value=None)
 
 	if st.button("upload to db"):
 		df = pd.DataFrame([{'timestamp':timestamp, 'km_account':km, 'km_moped':km_moped}])
