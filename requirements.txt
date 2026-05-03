@@ -1,4 +1,9 @@
+gpxpy
+geopy
+
 matplotlib
+
+numpy-ext
 
 pandas
 psycopg2-binary

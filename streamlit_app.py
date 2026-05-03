@@ -3,6 +3,7 @@ import streamlit as st
 pages = {
     "running": [
         st.Page("pages/running.py", title="running data"),
+        st.Page("pages/running_upload.py", title="running upload"),
     ],
     "clothes": [
         st.Page("pages/clothes.py", title="digital wardrobe"),
